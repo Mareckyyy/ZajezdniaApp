@@ -44,7 +44,7 @@ Dodawanie ekspedycji: Tworzenie nowych wyjazdów tramwajów.
 5.1. Wejdź na stronę: https://github.com/Mareckyyy/ZajezdniaApp \
 5.2. Pobierz repozytorium w formie pliku .zip.\
 5.3. Wypakuj repozytorium.\
-5.4. Uruchom plik "Zamówienia.sln".\
+5.4. Uruchom plik "Zajezdnia.sln".\
 5.5. Uruchom Konsolę Menadżera Pakietów.\
 5.6. Wpisz w konsoli "Update-Database".\
 5.6.1. W przypadku błędu "The term 'Update-Database' is not recognized as the name of a cmdlet, function, script file, or operable program." wpisz w konsoli "Install-Package Microsoft.EntityFrameworkCore.Tools".\
