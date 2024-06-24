@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Wyjazdy.Models
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "System Zajezdnia";
+    var user = await UserManager.GetUserAsync(User);
+    var isAdministrator = user != null && user.TypUzytkownika == "Administrator";
+}
+
+<div class="container">
+    <div class="centered-container">
+        <div class="button-row">
+            @*@<a class="square-button @GetCustomButtonClass(isAdministrator, "primary", "order")" href="@Url.Action("Create", "Order")">Ekspedycja<img src="~/images/105n.png" alt="Company Logo" class="img-fluid" style="max-height: 50px;" /></a>*@
+            <a class="square-button @GetCustomButtonClass(isAdministrator, "primary", "order")" href="@Url.Action("Create", "Order")">
+                Ekspedycja
+                <img src="~/images/105n.png" alt="Company Logo" class="img-fluid" style="max-height: 100px;">
+            </a>
+            <a class="square-button @GetCustomButtonClass(isAdministrator, "secondary")" href="@Url.Action("Index", "OrderManagement")">Zarządzaj ekspedycją
+                <img src="~/images/lf01.png" alt="Company Logo" class="img-fluid" style="max-height: 100px;">
+            </a>
+        @*</div>
+        <div class="button-row">*@
+            <a class="square-button @GetCustomButtonClass(isAdministrator, "success")" href="@Url.Action("Index", "Product")">Zarządzaj taborem
+                <img src="~/images/lf02.png" alt="Company Logo" class="img-fluid" style="max-height: 100px;">
+            </a>
+            <a class="square-button @GetCustomButtonClass(isAdministrator, "danger")" href="@Url.Action("Index", "User")">Zarządzaj pracownikami
+                <img src="~/images/urbino.png" alt="Company Logo" class="img-fluid" style="max-height: 100px;">
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+@functions {
+    private string GetCustomButtonClass(bool isAdministrator, string colorClass, string buttonType = "")
+    {
+        if (isAdministrator)
+        {
+            return $"admin-{colorClass}";
+        }
+        else
+        {
+            if (buttonType == "order")
+            {
+                return "user-order-button";
+            }
+            else
+            {
+                return "user-button";
+            }
+        }
+    }
+}
